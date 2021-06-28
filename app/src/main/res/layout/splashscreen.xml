@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Basiru"
+        android:textAlignment="center"
+        android:textSize="27dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/warna_teks"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplikasi Penggalangan Dana"
+        android:textAlignment="center"
+        android:textSize="17dp"
+        android:textColor="@color/warna_teks"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Versi 1.0"
+        android:textAlignment="center"
+        android:textSize="14dp"
+        android:textColor="@color/warna_teks"
+        android:layout_marginBottom="60dp"/>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:theme="@style/Widget.AppCompat.ProgressBar"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
