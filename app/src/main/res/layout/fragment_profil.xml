@@ -16,7 +16,7 @@
         android:paddingStart="10dp"
         android:text="Profil"
         android:textSize="23dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginBottom="20dp"
         android:gravity="start"/>
 
@@ -43,14 +43,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Eva Rahmiati"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="15dp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="evarahmiati@gmail.com"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="15dp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ubah Profil"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="17dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="textStart"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="Ganti sandi"
         android:textSize="17dp"
         android:layout_marginStart="10dp"
@@ -85,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="textStart"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="Keluar"
         android:textSize="17dp"
         android:layout_marginStart="10dp"
