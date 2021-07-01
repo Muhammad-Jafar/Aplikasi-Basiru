@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logobasiru"
         android:layout_margin="20dp"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
