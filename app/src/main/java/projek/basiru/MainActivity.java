@@ -1,6 +1,7 @@
 package projek.basiru;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,7 +18,7 @@ import projek.basiru.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity
 {
-
+    private String url = "https://www.basirusamalewa.com/auth";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,5 +42,11 @@ public class MainActivity extends AppCompatActivity
     public void logoutacc(View view) {
         Intent loguoutacc = new Intent(MainActivity.this, login.class);
         startActivity(loguoutacc);
+    }
+
+    public void ubahprofil(View view) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 }

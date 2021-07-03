@@ -58,27 +58,29 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:textAlignment="textStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ubah Profil"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/ubahprofil"-->
+<!--        android:onClick="ubahprofil"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Ubah Profil"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="17dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton"/>-->
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:text="Ganti sandi"
-        android:textSize="17dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="7dp"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:text="Ganti sandi"-->
+<!--        android:textSize="17dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton"/>-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:onClick="logoutacc"
