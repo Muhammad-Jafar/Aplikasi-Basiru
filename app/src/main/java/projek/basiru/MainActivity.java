@@ -18,6 +18,7 @@ import projek.basiru.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity
 {
+    private String url = "";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

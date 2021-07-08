@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class registrasi extends AppCompatActivity
 
     TextInputEditText namanya, imelnya, sandinya;
     MaterialButton daftarnow;
-    CircularProgressIndicator lodingregis;
+    ProgressBar lodingregis;
 
     @Override
     protected void onCreate(Bundle savedIsntanceState){
@@ -38,6 +39,7 @@ public class registrasi extends AppCompatActivity
         imelnya = findViewById(R.id.daftarimel);
         sandinya = findViewById(R.id.daftarsandi);
         lodingregis = findViewById(R.id.lodingdaftar);
+        lodingregis.setVisibility(View.GONE);
         daftarnow = findViewById(R.id.Daftarsekarang);
         daftarnow.setOnClickListener(this::registrasi);
     }
