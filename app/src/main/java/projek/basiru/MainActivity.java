@@ -18,7 +18,6 @@ import projek.basiru.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity
 {
-    private String url = "https://www.basirusamalewa.com/auth";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

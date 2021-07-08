@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,8 @@ import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.safetynet.SafetyNet;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONObject;
@@ -30,20 +34,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import projek.basiru.auth.Client;
+import projek.basiru.auth.ResponsesAuth;
+import projek.basiru.auth.Service;
+import retrofit2.Call;
+import retrofit2.Callback;
 
-public class login extends AppCompatActivity {
+
+public class login extends AppCompatActivity
+{
     //captcha
     private final String Sitekey = "6LevYhcbAAAAAFTPaCAjCmmHclPtj2aMSabPRAnD";
     private final String Secretkey = "6LevYhcbAAAAAPkr8-D3Z1R-h2fDEAkefnxQvS5v";
     public String TAG = "Success";
-    public String userResponToken;
     RequestQueue queue;
 
     //login
-    TextInputLayout imel, sandi;
+    TextInputEditText imel, sandi;
     MaterialButton loginapp, registerapp;
-    private String simel, ssandi;
-    private final String url_login = "https://www.basirusamalewa.com/Loginapi.php";
+    ProgressBar loding;
     int i = 0;
 
     @Override
@@ -51,21 +60,83 @@ public class login extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        getSupportActionBar().hide();
 
-        //objek XML
-        loginapp = findViewById(R.id.login);
+        loginapp = findViewById(R.id.logindulu);
         imel = findViewById(R.id.inputimel);
         sandi = findViewById(R.id.inputsandi);
         registerapp = findViewById(R.id.daftardulu);
-
-        //logindatabase
-        queue = Volley.newRequestQueue(getApplicationContext());
+        loding = findViewById(R.id.lodinganim);
+        loginapp.setOnClickListener(this::logindulu);
+        loding.setVisibility(View.GONE);
     }
 
-    public void login(View view)
+    public void logindulu(View view)
     {
-        //Captcha
+
+        if (imel.getText().toString().trim().isEmpty())
+        {
+            imel.requestFocus();
+            imel.setError("Email tidak boleh kosong!");
+        }
+        else if (sandi.getText().toString().trim().isEmpty())
+        {
+            sandi.requestFocus();
+            sandi.setError("Kata Sandi tidak boleh kosong!");
+        }
+        else { cekPassword(); }
+    }
+
+    void cekPassword()
+    {
+        loding.setVisibility(View.VISIBLE);
+        try {
+            Client Client = new Client();
+            Service apiService = Client.getClient().create(Service.class);
+            Call<ResponsesAuth> call = apiService.login(imel.getText().toString(),
+                                                        sandi.getText().toString());
+            call.enqueue(new Callback<ResponsesAuth>()
+            {
+                @Override
+                public void onResponse(Call<ResponsesAuth> call, retrofit2.Response<ResponsesAuth> response)
+                {
+                    if (response.isSuccessful())
+                    {
+                        ResponsesAuth auth = response.body();
+
+                        if (auth.getMsg().equals("Login Berhasil!"))
+                        {
+                            captcha();
+                            Intent go = new Intent(login.this, MainActivity.class);
+                            startActivity(go);
+                            loding.setVisibility(View.GONE);
+                            finish();
+                        }
+                        else
+                        {
+                            loding.setVisibility(View.GONE);
+                            Toast.makeText(login.this, "Email dan Kata Sandi tidak cocok!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponsesAuth> call, Throwable t)
+                {
+                    Log.d("Error", t.getMessage());
+                    Toast.makeText(login.this, "Server tidak merespon", Toast.LENGTH_LONG).show();
+                    loding.setVisibility(View.GONE);
+                }
+            });
+
+        } catch (Exception e) {
+            loding.setVisibility(View.GONE);
+            Toast.makeText(login.this, "Gagal menghubungkan!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    void captcha()
+    {
         SafetyNet.getClient(this).verifyWithRecaptcha(Sitekey)
                 .addOnSuccessListener (this, response ->
                 {
@@ -85,42 +156,6 @@ public class login extends AppCompatActivity {
                         }
                     }
                 });
-
-        //login
-        final String username = imel.getEditText().toString().trim();
-        final String katasandi = sandi.getEditText().toString().trim();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_login,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        if (response.contains(TAG))
-                        {
-                            Intent loginaplikasi = new Intent(login.this, MainActivity.class);
-                            startActivity(loginaplikasi);
-                        }
-                        else { Toast.makeText(login.this, "Email atau sandi tidak valid", Toast.LENGTH_LONG).show(); }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(login.this, "Gagal mengakses server", Toast.LENGTH_SHORT).show();
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put(url_login, username);
-                params.put(url_login, katasandi);
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
-        //login
     }
 
     protected  void handleSiteVerify(final String responseToken)

@@ -29,7 +29,6 @@
             android:layout_marginBottom="30dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputimel"
             android:hint="masukan email"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -38,11 +37,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/inputimel"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputsandi"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -54,7 +53,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/inputsandi"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,14 +74,21 @@
                 android:layout_marginRight="60dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login"
-                android:onClick="login"
+                android:id="@+id/logindulu"
+                android:onClick="logindulu"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:text="LOGIN"
                 style="@style/Widget.MaterialComponents.Button"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/lodinganim"
+            android:layout_marginTop="100dp"
+            android:theme="@style/Widget.AppCompat.ProgressBar"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

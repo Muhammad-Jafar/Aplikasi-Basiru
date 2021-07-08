@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Basiru">
 
+
         <activity android:name=".Splashscreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>

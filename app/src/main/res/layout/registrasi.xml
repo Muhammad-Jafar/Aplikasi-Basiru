@@ -23,6 +23,19 @@
             android:layout_marginTop="50dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:hint="masukan nama"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/daftarnama"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:hint="masukan email"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -31,7 +44,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/daftarimel"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -45,7 +59,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/daftarsandi"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,10 +83,16 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:text="DAFTAR"
+                android:id="@+id/Daftarsekarang"
                 style="@style/Widget.MaterialComponents.Button"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/lodingdaftar"
+            android:layout_marginTop="40dp"
+            android:theme="@style/Widget.AppCompat.ProgressBar"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
