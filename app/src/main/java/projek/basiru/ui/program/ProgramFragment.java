@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import org.jetbrains.annotations.NotNull;
 
 import projek.basiru.R;
 import projek.basiru.databinding.FragmentProfilBinding;
@@ -34,6 +37,12 @@ public class ProgramFragment extends Fragment {
         binding = FragmentProfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

@@ -37,9 +37,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="JUMLAH DONASI YANG TERKUMPUL"
-                    android:textSize="10dp" />
+                    android:textSize="13dp" />
 
                 <TextView
+                    android:id="@+id/jumlahterkumpul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Rp. 10.400.000"

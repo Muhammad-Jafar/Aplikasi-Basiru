@@ -14,8 +14,8 @@ public interface Service
 
     @FormUrlEncoded
     @POST("Api/login")
-    Call<ResponsesAuth> login(@Field("email") String email,
-                              @Field("password") String password);
+    Call<ResponsesAuth> login (@Field("email") String email,
+                               @Field("password") String password);
 
     @FormUrlEncoded
     @POST("Api/registrasi")
@@ -23,11 +23,8 @@ public interface Service
                                    @Field("email") String email,
                                    @Field("password") String password);
 
-
     @FormUrlEncoded
-    @POST("Api/apdetdata")
-    Call<ResponsesAuth> apdetdata(@Field("name") String nama,
-                                   @Field("email") String email,
-                                   @Field("password") String password);
+    @GET("Api/totaldonasi")
+    Call<ResponsesAuth> totaldonasi(@Field("nominal") String nominal);
 
 }

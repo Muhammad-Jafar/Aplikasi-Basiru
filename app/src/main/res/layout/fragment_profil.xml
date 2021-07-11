@@ -39,52 +39,68 @@
             android:gravity="start"
             android:layout_marginStart="10dp">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
+                android:id="@+id/namaprofil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Eva Rahmiati"
                 android:textColor="@color/black"
                 android:textSize="15dp"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
+                android:id="@+id/namaimel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="evarahmiati@gmail.com"
+                android:hint="evarahmiati"
                 android:textColor="@color/black"
-                android:textSize="15dp"/>
+                android:textSize="17dp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/ubahprofil"
-        android:onClick="ubahprofil"
-        android:textAlignment="textStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ubah Profil"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/ubahprofil"-->
+<!--        android:onClick="ubahprofil"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Ubah Profil"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="17dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton"/>-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/gantisandi"-->
+<!--        android:onClick="gantisandi"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:text="Ganti sandi"-->
+<!--        android:textSize="17dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton"/>-->
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/gantisandi"
-        android:onClick="gantisandi"
+        android:id="@+id/tentang"
+        android:onClick="tentangapk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:text="Ganti sandi"
+        android:text="TENTANG APLIKASI"
         android:textSize="17dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="7dp"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        style="@style/Widget.MaterialComponents.Button.TextButton" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logutacc"
         android:onClick="logoutacc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

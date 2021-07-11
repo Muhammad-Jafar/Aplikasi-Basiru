@@ -1,6 +1,7 @@
 package projek.basiru;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,8 +38,6 @@ import retrofit2.Callback;
 
 public class login extends AppCompatActivity
 {
-    //captcha
-    private final String Sitekey = "6LevYhcbAAAAAFTPaCAjCmmHclPtj2aMSabPRAnD";
     private final String Secretkey = "6LevYhcbAAAAAPkr8-D3Z1R-h2fDEAkefnxQvS5v";
     public String TAG = "Success";
     RequestQueue queue;
@@ -48,6 +47,9 @@ public class login extends AppCompatActivity
     MaterialButton loginapp, registerapp;
     ProgressBar loding;
     int i = 0;
+
+    //Share preference
+    SharedPreferences  sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -63,6 +65,9 @@ public class login extends AppCompatActivity
         loding = findViewById(R.id.lodinganim);
         loginapp.setOnClickListener(this::logindulu);
         loding.setVisibility(View.GONE);
+
+        //sesi login
+        sharedPreferences = getSharedPreferences("user details", MODE_PRIVATE);
     }
 
     public void logindulu(View view)
@@ -78,7 +83,17 @@ public class login extends AppCompatActivity
             sandi.requestFocus();
             sandi.setError("Kata Sandi tidak boleh kosong!");
         }
-        else { cekPassword(); }
+        else
+            {
+                String email = imel.getText().toString();
+                String password = sandi.getText().toString();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("email", email);
+                editor.putString("password", password);
+                editor.apply();
+
+                cekPassword();
+            }
     }
 
     void cekPassword()
@@ -101,6 +116,7 @@ public class login extends AppCompatActivity
                         if (auth.getMsg().equals("Login Berhasil!"))
                         {
                             captcha();
+                            Toast.makeText(getApplicationContext(), "Login Berhasil",Toast.LENGTH_SHORT).show();
                             Intent go = new Intent(login.this, MainActivity.class);
                             startActivity(go);
                             loding.setVisibility(View.GONE);
@@ -131,7 +147,9 @@ public class login extends AppCompatActivity
 
     void captcha()
     {
-        SafetyNet.getClient(this).verifyWithRecaptcha(Sitekey)
+        //captcha
+        String sitekey = "6LevYhcbAAAAAFTPaCAjCmmHclPtj2aMSabPRAnD";
+        SafetyNet.getClient(this).verifyWithRecaptcha(sitekey)
                 .addOnSuccessListener (this, response ->
                 {
                     if (!response.getTokenResult().isEmpty())

@@ -25,7 +25,9 @@
 
         <activity android:name=".login"/>
         <activity android:name=".registrasi"/>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:label="Shared Preferences - Details"/>
+        <activity android:name=".Tentangapk"/>
+        <activity android:name=".donasi"/>
 
     </application>
 

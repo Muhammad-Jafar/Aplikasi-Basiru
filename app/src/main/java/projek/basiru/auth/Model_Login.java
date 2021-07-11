@@ -17,6 +17,10 @@ public class Model_Login
     @Expose
     private String password;
 
+    @SerializedName("nominal")
+    @Expose
+    private String nominal;
+
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
@@ -28,4 +32,8 @@ public class Model_Login
     public String getEmail() { return email; }
 
     public void setEmail(String email) { this.email = email; }
+
+    public String getNominal( String nominal) { return nominal; }
+
+    public void setNominal(String nominal) { this.nominal = nominal; }
 }

@@ -78,7 +78,7 @@
                 android:onClick="logindulu"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:text="LOGIN"
+                android:text="MASUK"
                 style="@style/Widget.MaterialComponents.Button"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>

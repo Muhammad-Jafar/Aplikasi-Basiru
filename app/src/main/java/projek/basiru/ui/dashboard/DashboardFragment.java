@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,7 +17,6 @@ import projek.basiru.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment
 {
-
     private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -41,6 +42,7 @@ public class DashboardFragment extends Fragment
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+
     }
 
     @Override
