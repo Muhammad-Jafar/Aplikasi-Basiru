@@ -111,8 +111,25 @@ public class MainActivity extends AppCompatActivity
                 Log.d("Error Response",error.toString());
             }
         });
-// Add the request to the RequestQueue.
+        // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
 
+    public void tentangapk(View view)
+    {
+        Intent tentangapk = new Intent(MainActivity.this, Tentangapk.class);
+        startActivity(tentangapk);
+    }
+
+    public void logoutacc(View view)
+    {
+        Intent logoutacc = new Intent(MainActivity.this, login.class);
+        startActivity(logoutacc);
+    }
+
+    public void donasikan (View view)
+    {
+        Intent donasikan = new Intent(MainActivity.this, donasi.class);
+        startActivity(donasikan);
     }
 }

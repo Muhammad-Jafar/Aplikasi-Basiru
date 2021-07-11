@@ -19,7 +19,6 @@ public class Tentangapk extends AppCompatActivity
 
     }
 
-
     public void keluartentang(View view)
     {
         Intent keluar = new Intent(Tentangapk.this, MainActivity.class);

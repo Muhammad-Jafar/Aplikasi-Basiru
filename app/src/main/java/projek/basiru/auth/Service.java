@@ -19,12 +19,16 @@ public interface Service
 
     @FormUrlEncoded
     @POST("Api/registrasi")
-    Call<ResponsesAuth> registrasi(@Field("name") String nama,
-                                   @Field("email") String email,
-                                   @Field("password") String password);
+    Call<ResponsesAuth> registrasi( @Field("name") String nama,
+                                    @Field("email") String email,
+                                    @Field("password") String password );
 
     @FormUrlEncoded
-    @GET("Api/totaldonasi")
-    Call<ResponsesAuth> totaldonasi(@Field("nominal") String nominal);
+    @POST("Api/donasi")
+    Call<ResponsesAuth> donasi(@Field("nama") String nama,
+                               @Field("program") String program,
+                               @Field("no_telp") String no_telp,
+                               @Field("nominal") String nominal,
+                               @Field("bank") String bank);
 
 }

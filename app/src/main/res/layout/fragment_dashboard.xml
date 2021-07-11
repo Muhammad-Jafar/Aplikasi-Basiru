@@ -39,12 +39,28 @@
                     android:text="JUMLAH DONASI YANG TERKUMPUL"
                     android:textSize="13dp" />
 
-                <TextView
-                    android:id="@+id/jumlahterkumpul"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Rp. 10.400.000"
-                    android:textSize="25dp" />
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp."
+                        android:textSize="25dp"/>
+
+                    <TextView
+                        android:id="@+id/jumlahterkumpul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="10.400.000"
+                        android:textSize="25dp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
