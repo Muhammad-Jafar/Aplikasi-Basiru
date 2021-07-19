@@ -5,6 +5,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class Model_Login
 {
+    //aplod gbr
+    private boolean success;
+    private String message;
+
+    public boolean isSuccess() {
+        return success;
+    }
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    //aplod gbr
+
     //login dan regis
     @SerializedName("name")
     @Expose
@@ -21,7 +40,7 @@ public class Model_Login
 
 
     //donasi
-    @SerializedName("nma")
+    @SerializedName("nama")
     @Expose
     private String nama;
 
@@ -45,6 +64,26 @@ public class Model_Login
     @Expose
     private String image;
     //donasi
+
+
+//    //program
+//    //donasi
+//    @SerializedName("judul")
+//    @Expose
+//    private String judul;
+//
+//    @SerializedName("mulai")
+//    @Expose
+//    private String mulai;
+//
+//    @SerializedName("deadline")
+//    @Expose
+//    private String deadline;
+//
+//    @SerializedName("status")
+//    @Expose
+//    private String status;
+//    //program
 
 
     //setter dan getter untuk login dan regis
@@ -83,4 +122,20 @@ public class Model_Login
     public String getImage( String image) { return image; }
     public void setImage(String image) { this.image = image; }
     //setter dan getter untuk donasi
+
+
+//    //setter dan getter untuk program
+//    public String getJudul() { return judul; }
+//    public void setJudul(String judul) { this.judul = judul; }
+//
+//    public String getMulai() { return mulai; }
+//    public void setMulai(String mulai) { this.mulai = mulai; }
+//
+//    public String getDeadline() { return deadline; }
+//    public void setDeadline(String deadline) { this.deadline = deadline; }
+//
+//    public String getStatus() { return status; }
+//    public void setStatus(String status) { this.status = status; }
+//    //setter dan getter untuk program
+
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,6 @@ import projek.basiru.auth.Service;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-
 public class login extends AppCompatActivity
 {
     private final String Secretkey = "6LevYhcbAAAAAPkr8-D3Z1R-h2fDEAkefnxQvS5v";
@@ -50,6 +50,7 @@ public class login extends AppCompatActivity
 
     //Share preference
     SharedPreferences  sharedPreferences;
+    TextView namalogin, imelogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,9 +67,13 @@ public class login extends AppCompatActivity
         loginapp.setOnClickListener(this::logindulu);
         loding.setVisibility(View.GONE);
 
-        //sesi login
+        //share prefenrence data login user
+        namalogin = findViewById(R.id.namaprofil);
+        imelogin = findViewById(R.id.namaimel);
         sharedPreferences = getSharedPreferences("user details", MODE_PRIVATE);
+        //share prefenrence data login user
     }
+
 
     public void logindulu(View view)
     {
@@ -87,12 +92,13 @@ public class login extends AppCompatActivity
             {
                 String email = imel.getText().toString();
                 String password = sandi.getText().toString();
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("email", email);
                 editor.putString("password", password);
                 editor.apply();
-
                 cekPassword();
+                captcha();
             }
     }
 
@@ -115,12 +121,13 @@ public class login extends AppCompatActivity
 
                         if (auth.getMsg().equals("Login Berhasil!"))
                         {
-                            captcha();
                             Toast.makeText(getApplicationContext(), "Login Berhasil",Toast.LENGTH_SHORT).show();
                             Intent go = new Intent(login.this, MainActivity.class);
+                            String email = imel.getText().toString();
+                            go.putExtra("email", email);
                             startActivity(go);
                             loding.setVisibility(View.GONE);
-                            finish();
+//                            finish();
                         }
                         else
                         {

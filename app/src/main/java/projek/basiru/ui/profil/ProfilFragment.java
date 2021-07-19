@@ -10,11 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import org.jetbrains.annotations.NotNull;
 
 import projek.basiru.R;
 import projek.basiru.databinding.FragmentProfilBinding;
+import projek.basiru.databinding.FragmentProgramBinding;
+import projek.basiru.ui.program.ProgramViewModel;
 
 public class ProfilFragment extends Fragment
 {
@@ -23,23 +26,15 @@ public class ProfilFragment extends Fragment
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//        ProfilViewModel profilViewModel = new ViewModelProvider(this).get(ProfilViewModel.class);
         View view = inflater.inflate(R.layout.fragment_profil, container, false);
+        ProfilViewModel profilViewModel = new ViewModelProvider(this).get(ProfilViewModel.class);
         binding = FragmentProfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 //        final TextView textView = binding.fragmentProfil;
 //        profilViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-
+        return root;
     }
 
     @Override

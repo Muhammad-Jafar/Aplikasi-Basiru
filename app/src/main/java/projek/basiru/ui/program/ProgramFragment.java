@@ -21,28 +21,21 @@ import projek.basiru.login;
 
 public class ProgramFragment extends Fragment {
 
-    private @NonNull FragmentProfilBinding binding;
+    private @NonNull FragmentProgramBinding binding;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//        ProgramViewModel homeViewModel = new ViewModelProvider(this).get(ProgramViewModel.class);
-//        binding = FragmentProgramBinding.inflate(inflater, container, false);
-//        View root = binding.getRoot();
+        ProgramViewModel homeViewModel = new ViewModelProvider(this).get(ProgramViewModel.class);
+        binding = FragmentProgramBinding.inflate(inflater, container, false);
+        View view = inflater.inflate(R.layout.fragment_program, container, false);
+        View root = binding.getRoot();
 
 //        final TextView textView = binding.fragmentProgram;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        View view = inflater.inflate(R.layout.fragment_program, container, false);
-        binding = FragmentProfilBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        return view;
-    }
 
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
+        return root;
     }
 
     @Override

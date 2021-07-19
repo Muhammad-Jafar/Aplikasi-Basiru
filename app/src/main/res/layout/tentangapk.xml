@@ -34,7 +34,7 @@
         android:layout_marginTop="20dp"
         android:textSize="16dp"
         android:textAlignment="textStart"
-        android:text="Basiru adalah platform sosial yang ditujukan untuk menghubungkan antara peristiwa sosial, bencana alam dan kegiatan sosial dengan para pegiat bantuan sosial untuk membantu menyalurkan donasi kepada mereka yang membutuhkan."/>
+        android:text="Basiru adalah platform crowdfunding yang ditujukan untuk menghubungkan antara donatur dengan penerima donasi sebagai bentuk bantuan sosial untuk membantu menyalurkan bantuan kepada mereka yang membutuhkan."/>
 
     <TextView
         android:layout_width="match_parent"
@@ -42,15 +42,23 @@
         android:layout_marginTop="20dp"
         android:textSize="16dp"
         android:textAlignment="textStart"
-        android:text="Basiru diambil dari singkatan bayar siru yang berarti saling tolong menolong atau kegiatan balas budi antara orang yang satu dengan yang lain, atau antara masyarakat yang satu dengan masyarakat lain. "/>
+        android:text="Kabupaten Sumbawa adalah sebuah kabupaten di provinsi Nusa Tenggara Barat, Indonesia. Ibu kotanya adalah Sumbawa Besar. Kabupaten ini terletak di sebagian besar bagian barat pulau Sumbawa. Kabupaten sumbawa termasuk dalam masyarakat yang sampai saat ini menanamkan adat basiru dikehidupan sehari-hari."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="16dp"
+        android:textAlignment="textStart"
+        android:text="Basiru diambil dari singkatan bayar siru (bahasa sumbawa) yang berarti saling tolong menolong atau kegiatan balas budi antara orang yang satu dengan yang lain, atau antara masyarakat yang satu dengan masyarakat lain."/>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="120dp"
         android:text="Keluar"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/Keluartentang"
         android:onClick="keluartentang"
-        android:layout_height="55dp"/>
+        android:layout_height="50dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

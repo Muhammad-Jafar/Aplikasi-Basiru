@@ -1,13 +1,13 @@
 package projek.basiru.auth;
 
-import java.util.List;
-
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
+import retrofit2.http.Part;
 
 public interface Service
 {
@@ -30,5 +30,23 @@ public interface Service
                                @Field("no_telp") String no_telp,
                                @Field("nominal") String nominal,
                                @Field("bank") String bank);
+
+    @Multipart
+    @POST("Api/uploadMultipart")
+    Call<ResponsesAuth> uploadMultipart(@Part("action") RequestBody action,
+                                        @Part MultipartBody.Part photo);
+
+    //    @FormUrlEncoded
+//    @POST(Config.API_UPLOAD)
+//    Call<BaseResponse> uploadPhotoBase64(
+//            @Field("action") String action,
+//            @Field("photo") String photo);
+
+//    @FormUrlEncoded
+//    @POST("Api/listprogram")
+//    Call<ResponsesAuth> listprogram(@Field("judul") String judul,
+//                                    @Field("mulai") String mulai,
+//                                    @Field("deadline") String deadline,
+//                                    @Field("status") String status);
 
 }
