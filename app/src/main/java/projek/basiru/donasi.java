@@ -59,7 +59,7 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.program);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        getSupportActionBar().hide();
 
         //input teks donnasi
         donasinama = findViewById(R.id.donasinama);
@@ -70,7 +70,6 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
         aplodbukti = findViewById(R.id.aplodresi);
         imgThumb = (ImageView) findViewById(R.id.img_thumb);
         aplodbukti.setOnClickListener(this::choosePhoto);
-
 
         //loding
         lodingdonasi = findViewById(R.id.lodingdonasi);
@@ -229,9 +228,9 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
         uploadService.uploadPhotoMultipart(action, photoPart, new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
-                BaseResponse baseResponse = (BaseResponse) response.body();
-                if(baseResponse != null) {
-                    Toast.makeText(donasi.this, baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                BaseResponse responnya = (BaseResponse) response.body();
+                if(responnya != null) {
+                    Toast.makeText(donasi.this, responnya.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

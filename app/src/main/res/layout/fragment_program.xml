@@ -7,81 +7,222 @@
     android:layout_height="match_parent"
     tools:context=".ui.program.ProgramFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
 
-        <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="330dp"
+                    android:layout_height="360dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/gbrdonasi"
+                        android:layout_width="300dp"
+                        android:layout_height="190dp"
+                        android:src="@drawable/gambar1"
+                        android:padding="10dp"/>
+
+                    <TextView
+                        android:id="@+id/judulprogram"
+                        android:layout_width="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_height="wrap_content"
+                        android:text="Banjir melanda daerah perbukitan dan menambah masa pembaruan dan juga menambah masa perbaikan jalan di desa yang dikunjungi"
+                        android:textAlignment="center"
+                        android:textSize="15dp"/>
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:onClick="donasikan"
+                        android:id="@+id/donasikan"
+                        android:text="Donasi"
+                        android:textAlignment="center"
+                        android:layout_marginLeft="80dp"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="330dp"
+                    android:layout_height="360dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/gbrdonasi1"
+                        android:layout_width="300dp"
+                        android:layout_height="190dp"
+                        android:src="@drawable/gambar2"
+                        android:padding="10dp"/>
+
+                    <TextView
+                        android:id="@+id/judulprogramsatu"
+                        android:layout_width="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_height="wrap_content"
+                        android:text="Banjir melanda daerah perbukitan dan menambah masa pembaruan dan juga menambah masa perbaikan jalan di desa yang dikunjungi"
+                        android:textAlignment="center"
+                        android:textSize="15dp"/>
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:onClick="donasikansatu"
+                        android:id="@+id/donasikansatu"
+                        android:text="Donasi"
+                        android:textAlignment="center"
+                        android:layout_marginLeft="80dp"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+                android:layout_width="330dp"
                 android:layout_height="360dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/gbrdonasi"
+                    android:id="@+id/gbrdonasi2"
                     android:layout_width="300dp"
                     android:layout_height="190dp"
-                    android:src="@drawable/gambar1"
+                    android:src="@drawable/gambar3"
                     android:padding="10dp"/>
 
                 <TextView
-                    android:id="@+id/judulprogram"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/judulprogramdua"
+                    android:layout_width="match_parent"
+                    android:layout_margin="2dp"
                     android:layout_height="wrap_content"
-                    android:hint="Banjir"
+                    android:text="Banjir melanda daerah perbukitan dan menambah masa pembaruan dan juga menambah masa perbaikan jalan di desa yang dikunjungi"
                     android:textAlignment="center"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/mulaiprogram"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Waktu mulai"
-                        android:textAlignment="center"
-                        android:textSize="17dp"
-                        android:layout_marginEnd="20dp"/>
-
-                    <TextView
-                        android:id="@+id/deadlineprogram"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Waktu berakhir"
-                        android:textAlignment="center"
-                        android:textSize="17dp"
-                        android:layout_marginStart="20dp"/>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/statusprogram"
-                    android:textAlignment="textStart"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="8dp"
-                    android:hint="Sedang berjalan"
-                    android:textSize="17dp"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
-                    android:onClick="donasikan"
-                    android:id="@+id/donasikan"
+                    android:onClick="donasikandua"
+                    android:id="@+id/donasikandua"
+                    android:text="Donasi"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="80dp"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="330dp"
+                android:layout_height="360dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/gbrdonasi3"
+                    android:layout_width="300dp"
+                    android:layout_height="190dp"
+                    android:src="@drawable/gambar4"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:id="@+id/judulprogramtiga"
+                    android:layout_width="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Banjir melanda daerah perbukitan dan menambah masa pembaruan dan juga menambah masa perbaikan jalan di desa yang dikunjungi"
+                    android:textAlignment="center"
+                    android:textSize="15dp"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="donasikantiga"
+                    android:id="@+id/donasikantiga"
+                    android:text="Donasi"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="80dp"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="330dp"
+                android:layout_height="360dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/gbrdonasiempat"
+                    android:layout_width="300dp"
+                    android:layout_height="190dp"
+                    android:src="@drawable/gambar5"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:id="@+id/judulprogramempat"
+                    android:layout_width="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Banjir melanda daerah perbukitan dan menambah masa pembaruan dan juga menambah masa perbaikan jalan di desa yang dikunjungi"
+                    android:textAlignment="center"
+                    android:textSize="15dp"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="donasikanempat"
+                    android:id="@+id/donasikanempat"
                     android:text="Donasi"
                     android:textAlignment="center"
                     android:layout_marginLeft="80dp"
@@ -93,6 +234,6 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,12 +18,12 @@ public class Client
     public static final String BASE_URL = "https://basirusamalewa.com/";
     public static Retrofit retrofit = null;
     private static final Object LOCK = new Object();
-    private UploadInterface uploadInterface;
+    Service layananapi;
 
-    public static void clear() {
-        synchronized (LOCK) {
-            retrofit = null;
-        }
+
+    public static void clear()
+    {
+        synchronized (LOCK) { retrofit = null; }
     }
     public Retrofit getClient()
     {
@@ -47,17 +47,17 @@ public class Client
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .build();
-
-                uploadInterface = retrofit.create(UploadInterface.class);
             }
             return retrofit;
+
         }
     }
-    public void uploadPhotoMultipart(RequestBody action, MultipartBody.Part photo, Callback callback)
-    { uploadInterface.uploadPhotoMultipart(action, photo).enqueue(callback); }
+
+
+//    public void aplodresi(RequestBody action, MultipartBody.Part photo, Callback callback)
+//    { layananapi.uploadMultipart(action, photo).enqueue(callback); }
 
     //    public void uploadPhotoBase64(String action, String photo, Callback callback) {
-//        uploadInterface.uploadPhotoBase64(action, photo).enqueue(callback);
+//        layananapi.uploadPhotoBase64(action, photo).enqueue(callback);
 //    }
-
 }

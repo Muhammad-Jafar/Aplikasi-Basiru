@@ -15,8 +15,10 @@ import androidx.lifecycle.ViewModelProvider;
 import org.jetbrains.annotations.NotNull;
 
 import projek.basiru.R;
+import projek.basiru.SessionManager;
 import projek.basiru.databinding.FragmentProfilBinding;
 import projek.basiru.databinding.FragmentProgramBinding;
+import projek.basiru.login;
 import projek.basiru.ui.program.ProgramViewModel;
 
 public class ProfilFragment extends Fragment
@@ -33,6 +35,7 @@ public class ProfilFragment extends Fragment
 
 //        final TextView textView = binding.fragmentProfil;
 //        profilViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
 
         return root;
     }

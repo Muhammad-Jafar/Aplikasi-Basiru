@@ -90,13 +90,6 @@ public class login extends AppCompatActivity
         }
         else
             {
-                String email = imel.getText().toString();
-                String password = sandi.getText().toString();
-
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("email", email);
-                editor.putString("password", password);
-                editor.apply();
                 cekPassword();
                 captcha();
             }
@@ -123,11 +116,9 @@ public class login extends AppCompatActivity
                         {
                             Toast.makeText(getApplicationContext(), "Login Berhasil",Toast.LENGTH_SHORT).show();
                             Intent go = new Intent(login.this, MainActivity.class);
-                            String email = imel.getText().toString();
-                            go.putExtra("email", email);
                             startActivity(go);
                             loding.setVisibility(View.GONE);
-//                            finish();
+                            finish();
                         }
                         else
                         {

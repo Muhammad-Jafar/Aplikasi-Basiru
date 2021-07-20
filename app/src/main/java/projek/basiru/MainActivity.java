@@ -32,12 +32,13 @@ import projek.basiru.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity
 {
     //UI
-    AppCompatButton logout, tentang, ubahprofil, gantisandi;
-    TextView namalogin, imelogin, jumlah, namaprogram, mulaiprogram, deadlineprogram,statusprogram;
-    MaterialButton keluar, balikemenu, donasikan;
-
-    //share preference
-    SharedPreferences sharedPreferences;
+    TextView namalogin,
+             imelogin,
+             jumlah,
+             namaprogram,
+             mulaiprogram,
+             deadlineprogram,
+             statusprogram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,12 +48,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(binding.getRoot());
         findViewById(R.id.nav_view);
 
-        //Bottom navigation bar
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_program, R.id.navigation_dashboard, R.id.navigation_profil)
-                .build();
+        //Appbar function with Bottom navigation bar
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.navigation_program, R.id.navigation_dashboard, R.id.navigation_profil)
+//                .build();
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //Appbar function with Bottom navigation bar
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
         getSupportActionBar().hide();
 
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         //share prefenrence data login user
         namalogin = findViewById(R.id.namaprofil);
         imelogin = findViewById(R.id.namaimel);
-//        jumlah = findViewById(R.id.jumlahterkumpul);
+        jumlah = findViewById(R.id.jumlahterkumpul);
 
 //        if(getIntent().getStringExtra("email") != null)
 //        {
@@ -72,14 +75,14 @@ public class MainActivity extends AppCompatActivity
         mulaiprogram = findViewById(R.id.mulaiprogram);
         deadlineprogram = findViewById(R.id.deadlineprogram);
         statusprogram = findViewById(R.id.statusprogram);
-//        totaldonasi();
+        totaldonasi();
 
     }
 
     //API dashboard
     void totaldonasi()
     {
-        // Instantiate the RequestQueue.
+        // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://basirusamalewa.com/Api/totaldonasi";
         JSONObject jsonBody = new JSONObject();
@@ -92,9 +95,9 @@ public class MainActivity extends AppCompatActivity
                     public void onResponse(String response) {
                         try {
                                 //menaruh data JSON kedalam variabel JSON Object
-                                JSONObject jsonPost = new JSONObject(response.toString());
+                                JSONObject jsonPost = new JSONObject(response);
 
-                                //men set data ke dalam tampilan
+                                //men set data ke dalam tampilan fragment dashboard
                                 jumlah.setText(jsonPost.getString("nominal"));
 
                             } catch (JSONException e) { e.printStackTrace(); } }

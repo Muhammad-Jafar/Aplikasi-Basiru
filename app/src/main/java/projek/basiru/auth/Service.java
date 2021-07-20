@@ -3,6 +3,7 @@ package projek.basiru.auth;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Multipart;
@@ -36,8 +37,8 @@ public interface Service
     Call<ResponsesAuth> uploadMultipart(@Part("action") RequestBody action,
                                         @Part MultipartBody.Part photo);
 
-    //    @FormUrlEncoded
-//    @POST(Config.API_UPLOAD)
+//        @FormUrlEncoded
+//    @POST(Api/uploadMultipart)
 //    Call<BaseResponse> uploadPhotoBase64(
 //            @Field("action") String action,
 //            @Field("photo") String photo);
