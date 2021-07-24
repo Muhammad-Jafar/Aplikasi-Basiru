@@ -2,6 +2,8 @@ package projek.basiru.auth;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import projek.basiru.network.BaseResponse;
+import projek.basiru.network.Config;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.Field;
@@ -32,22 +34,8 @@ public interface Service
                                @Field("nominal") String nominal,
                                @Field("bank") String bank);
 
-    @Multipart
-    @POST("Api/uploadMultipart")
-    Call<ResponsesAuth> uploadMultipart(@Part("action") RequestBody action,
-                                        @Part MultipartBody.Part photo);
-
-//        @FormUrlEncoded
-//    @POST(Api/uploadMultipart)
-//    Call<BaseResponse> uploadPhotoBase64(
-//            @Field("action") String action,
-//            @Field("photo") String photo);
-
 //    @FormUrlEncoded
-//    @POST("Api/listprogram")
-//    Call<ResponsesAuth> listprogram(@Field("judul") String judul,
-//                                    @Field("mulai") String mulai,
-//                                    @Field("deadline") String deadline,
-//                                    @Field("status") String status);
-
+//    @POST(Config.API_UPLOAD)
+//    Call<BaseResponse> uploadPhotoBase64(@Field("action") String action,
+//                                         @Field("image") String image);
 }

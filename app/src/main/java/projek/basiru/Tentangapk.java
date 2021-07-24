@@ -15,7 +15,7 @@ public class Tentangapk extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tentangapk);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        getSupportActionBar().hide();
 
     }
 

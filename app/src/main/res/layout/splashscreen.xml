@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/splashscreen">
 
     <ImageView
         android:layout_width="95dp"
@@ -16,14 +17,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Basiru"
+        android:fontFamily="sans-serif-medium"
         android:textAlignment="center"
-        android:textSize="27dp"
+        android:textSize="30dp"
         android:paddingTop="10dp"
         android:textColor="@color/warna_teks"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Aplikasi Penggalangan Dana"
         android:textAlignment="center"
         android:textSize="17dp"

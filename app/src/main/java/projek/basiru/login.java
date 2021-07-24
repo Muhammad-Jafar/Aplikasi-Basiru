@@ -74,7 +74,6 @@ public class login extends AppCompatActivity
         //share prefenrence data login user
     }
 
-
     public void logindulu(View view)
     {
 
@@ -170,8 +169,6 @@ public class login extends AppCompatActivity
 
     protected  void handleSiteVerify(final String responseToken)
     {
-        //it is google recaptcha siteverify server
-        //you can place your server url
         String url = "https://www.google.com/recaptcha/api/siteverify";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
@@ -183,14 +180,15 @@ public class login extends AppCompatActivity
                         {
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.getBoolean("success"))
-                            { Toast.makeText(getApplicationContext(),String.valueOf(jsonObject.getBoolean("success")),Toast.LENGTH_LONG).show();}
-                            else { Toast.makeText(getApplicationContext(),String.valueOf(jsonObject.getString("error-codes")),Toast.LENGTH_LONG).show(); }
+                            { Toast.makeText(getApplicationContext(),
+                                    String.valueOf(jsonObject.getBoolean("success")),
+                                    Toast.LENGTH_LONG).show();}
+                            else { Toast.makeText(getApplicationContext(),
+                                    String.valueOf(jsonObject.getString("error-codes")),
+                                    Toast.LENGTH_LONG).show(); }
                         }
                         catch (Exception ex)
-                        {
-                            Log.d(TAG, "JSON exception: " + ex.getMessage());
-
-                        }
+                        { Log.d(TAG, "JSON exception: " + ex.getMessage()); }
                     }
                 },
                 new Response.ErrorListener() {

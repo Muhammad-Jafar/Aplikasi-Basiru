@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import projek.basiru.BuildConfig;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -20,12 +22,12 @@ public class UploadService
         okhttpBuilder.readTimeout(60, TimeUnit.SECONDS);
         okhttpBuilder.retryOnConnectionFailure(true);
 
-//        if (BuildConfig.DEBUG)
-//        {
-//            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//            okhttpBuilder.addInterceptor(interceptor);
-//        }
+        if (BuildConfig.DEBUG)
+        {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            okhttpBuilder.addInterceptor(interceptor);
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Config.BASE_URL)
@@ -39,7 +41,7 @@ public class UploadService
     public void uploadPhotoMultipart(RequestBody action, MultipartBody.Part photo, Callback callback)
     { uploadInterface.uploadPhotoMultipart(action, photo).enqueue(callback); }
 
-//    public void uploadPhotoBase64(String action, String photo, Callback callback) {
-//        uploadInterface.uploadPhotoBase64(action, photo).enqueue(callback);
-//    }
+    public void uploadPhotoBase64(String action, String photo, Callback callback) {
+        uploadInterface.uploadPhotoBase64(action, photo).enqueue(callback);
+    }
 }

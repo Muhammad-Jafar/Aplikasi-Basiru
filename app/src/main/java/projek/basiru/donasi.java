@@ -3,8 +3,10 @@ package projek.basiru;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,12 +22,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.util.Objects;
+import java.io.IOException;
 
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import projek.basiru.auth.Client;
 import projek.basiru.auth.ResponsesAuth;
 import projek.basiru.auth.Service;
@@ -35,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class donasi extends AppCompatActivity implements View.OnClickListener
+public class donasi extends AppCompatActivity
 {
     TextInputEditText donasinama,
                       donasiprogram,
@@ -45,14 +43,16 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
 
     MaterialButton donasikan, aplodbukti;
     ProgressBar lodingdonasi;
+    ImageView imgThumb;
 
-    //aplodresi
-    public static final int REQUEST_IMAGE = 100;
-    Uri uri;
-    private ImageView imgThumb;
     private static final int PICK_IMAGE = 1;
     private static final int PERMISSION_REQUEST_STORAGE = 2;
+
     private static final String TYPE_1 = "multipart";
+    private static final String TYPE_2 = "base64";
+
+    private UploadService uploadService;
+    private Uri uri;
 
     @Override
     protected void onCreate( Bundle savedInstanceState)
@@ -61,15 +61,15 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.program);
         getSupportActionBar().hide();
 
-        //input teks donnasi
+        //input teks donasi
         donasinama = findViewById(R.id.donasinama);
         donasiprogram = findViewById(R.id.donasiprogram);
         donasihp = findViewById(R.id.donasihp);
         donasinominal = findViewById(R.id.donasinominal);
         donasipilihbank = findViewById(R.id.donasipilihbank);
         aplodbukti = findViewById(R.id.aplodresi);
-        imgThumb = (ImageView) findViewById(R.id.img_thumb);
         aplodbukti.setOnClickListener(this::choosePhoto);
+        imgThumb = findViewById(R.id.previewpic);
 
         //loding
         lodingdonasi = findViewById(R.id.lodingdonasi);
@@ -78,6 +78,7 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
         //tombol donasi
         donasikan = findViewById(R.id.donasi);
         donasikan.setOnClickListener(this::donasikan);
+
     }
 
     public void donasikan(View view)
@@ -108,7 +109,7 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
             donasipilihbank.setError("Pilih bank tidak boleh kosong!");
         }
 
-        else { storedatadonasi(); }
+        else { storedatadonasi(); onClick(view); }
     }
 
     void storedatadonasi()
@@ -133,7 +134,7 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
 
                         if (auth.getMsg().equals("Donasi Berhasil!"))
                         {
-                            Toast.makeText(getApplicationContext(), "Donasi Berhasil",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "" + response.body().getMsg(),Toast.LENGTH_SHORT).show();
                             Intent go = new Intent(donasi.this, MainActivity.class);
                             startActivity(go);
                             lodingdonasi.setVisibility(View.GONE);
@@ -162,44 +163,56 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    @Override
+
+    //tombol klik
     public void onClick(View view)
     {
-        if (view == aplodbukti)
-        {
-            choosePhoto(view);
-        }
-        else if (view == donasikan)
-        {
-            if (uri != null)
-            {
-                File file = FileUtils.getFile(this, uri);
-                uploadMultipart(file);
-            } else { Toast.makeText(this, "You must choose the image", Toast.LENGTH_SHORT).show(); }
-        }
-//        else if(view == btnUpload2)
-//        {
+//        if(view == btnChoose) {
+//            choosePhoto();
+//        }else if(view == btnUpload1) {
 //            if(uri != null) {
-//                Bitmap bitmap = null;
-//                try {
-//                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                String encoded = ImageUtils.bitmapToBase64String(bitmap, 100);
-//                uploadBase64(encoded);
+//                File file = FileUtils.getFile(this, uri);
+//                uploadMultipart(file);
 //            }else{
 //                Toast.makeText(this, "You must choose the image", Toast.LENGTH_SHORT).show();
 //            }
 //        }
-//        }
+        if(view == aplodbukti)
+        {
+            if(uri != null)
+            {
+                Bitmap bitmap = null;
+                try { bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri); }
+                catch (IOException e) { e.printStackTrace(); }
+
+                String encoded = ImageUtils.bitmapToBase64String(bitmap, 100);
+                uploadBase64(encoded);
+            }else{
+                Toast.makeText(this, "You must choose the image", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
-    public void choosePhoto(View view)
+    //method base64
+    private void uploadBase64(String imgBase64)
     {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED
+        uploadService = new UploadService();
+        uploadService.uploadPhotoBase64(TYPE_2, imgBase64, new Callback()
+        {
+            @Override
+            public void onResponse(Call call, Response response)
+            {
+                BaseResponse baseResponse = (BaseResponse) response.body();
+                if(baseResponse != null) { Toast.makeText(donasi.this, baseResponse.getMessage(), Toast.LENGTH_SHORT).show(); }
+            }
+            @Override
+            public void onFailure(Call call, Throwable t) { t.printStackTrace(); }
+        });
+    }
+
+    private void choosePhoto(View view)
+    {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED)
         {
@@ -207,7 +220,7 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
                     new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     PERMISSION_REQUEST_STORAGE);
         }
-        else { openGallery(); }
+        else{ openGallery(); }
     }
 
     public void openGallery()
@@ -218,31 +231,14 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
         startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE);
     }
 
-    public void uploadMultipart(File file)
-    {
-        RequestBody photoBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part photoPart = MultipartBody.Part.createFormData("photo", file.getName(), photoBody);
-
-        RequestBody action = RequestBody.create(MediaType.parse("text/plain"), TYPE_1);
-        UploadService uploadService = new UploadService();
-        uploadService.uploadPhotoMultipart(action, photoPart, new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                BaseResponse responnya = (BaseResponse) response.body();
-                if(responnya != null) {
-                    Toast.makeText(donasi.this, responnya.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onFailure(Call call, Throwable t) { t.printStackTrace(); }
-        });
-    }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
-            if(data != null) {
+        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK)
+        {
+            if(data != null)
+            {
                 uri = data.getData();
                 imgThumb.setImageURI(uri);
             }
@@ -250,18 +246,20 @@ public class donasi extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PERMISSION_REQUEST_STORAGE: {
+        switch (requestCode)
+        {
+            case PERMISSION_REQUEST_STORAGE:
+                {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 { openGallery(); }
-                return ;
+                return;
             }
         }
     }
-
 
     public void balikemenu(View view)
     {

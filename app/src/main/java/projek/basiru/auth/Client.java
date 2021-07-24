@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-import projek.basiru.network.UploadInterface;
+//import projek.basiru.network.UploadInterface;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,7 +18,6 @@ public class Client
     public static final String BASE_URL = "https://basirusamalewa.com/";
     public static Retrofit retrofit = null;
     private static final Object LOCK = new Object();
-    Service layananapi;
 
 
     public static void clear()
@@ -31,7 +30,6 @@ public class Client
         {
             if (retrofit == null)
             {
-
                 Gson gson = new GsonBuilder()
                         .setLenient()
                         .create();
@@ -52,12 +50,4 @@ public class Client
 
         }
     }
-
-
-//    public void aplodresi(RequestBody action, MultipartBody.Part photo, Callback callback)
-//    { layananapi.uploadMultipart(action, photo).enqueue(callback); }
-
-    //    public void uploadPhotoBase64(String action, String photo, Callback callback) {
-//        layananapi.uploadPhotoBase64(action, photo).enqueue(callback);
-//    }
 }

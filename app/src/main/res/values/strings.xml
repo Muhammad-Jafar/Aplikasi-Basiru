@@ -1,7 +1,23 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Basiru</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_program">Program</string>
     <string name="title_profil">Profil</string>
     <string name="Basiru">Basiru</string>
+
+    <string-array name="jenisprogram">
+        <item>Kebakaran</item>
+        <item>Banjir</item>
+        <item>Hutan Belantara</item>
+        <item>Tsunami</item>
+        <item>Longsor</item>
+        <item>Bantu Palestina</item>
+        <item>Donasi quran untuk anak</item>
+    </string-array>
+
+    <string-array name="jenisbank">
+        <item tools:ignore="TypographyDashes">BRI : 0093-01-049032-50-6</item>
+        <item tools:ignore="TypographyDashes">BNI : 4534-2342-01</item>
+    </string-array>
+
 </resources>

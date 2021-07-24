@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONException;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         findViewById(R.id.nav_view);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setItemIconTintList(null);
 
         //Appbar function with Bottom navigation bar
 //        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -59,17 +62,10 @@ public class MainActivity extends AppCompatActivity
         NavigationUI.setupWithNavController(binding.navView, navController);
         getSupportActionBar().hide();
 
-
         //share prefenrence data login user
         namalogin = findViewById(R.id.namaprofil);
         imelogin = findViewById(R.id.namaimel);
         jumlah = findViewById(R.id.jumlahterkumpul);
-
-//        if(getIntent().getStringExtra("email") != null)
-//        {
-//            String email = getIntent().getStringExtra("email");
-//            imelogin.setText(email);
-//        }
 
         namaprogram = findViewById(R.id.judulprogram);
         mulaiprogram = findViewById(R.id.mulaiprogram);
